@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'devise'
+
 gem 'starter_generators', :git => 'https://github.com/rbetina/starter_generators', :branch => 'panels'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
