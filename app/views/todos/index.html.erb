@@ -1,3 +1,9 @@
+- When a Todo is created, it should be associated to the currently signed in user
+- When someone visits the Todos#index, they should see only their own todos
+
+
+
+
 <div class="page-header">
   <h1>
     Todos
@@ -29,6 +35,8 @@
           <dt>Content</dt>
           <dd><%= todo.content %></dd>
 
+          <dt>User</dt>
+          <dd><%= todo.user.email %></dd>
         </dl>
         <div class="btn-group btn-group-justified">
           <%= link_to todo_url(todo), :class => "btn btn-primary" do %>

@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   def index
-    @todos = Todo.all
+    @todos = current_user.todos
   end
 
   def show
@@ -14,6 +14,7 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new
     @todo.content = params[:content]
+    @todo.user_id = params[:user_id]
 
     if @todo.save
       redirect_to todos_url, :notice => "Todo created successfully."
