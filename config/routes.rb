@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Todo resource:
+  # CREATE
+  get '/todos/new',      :controller => 'todos', :action => 'new',    :as => 'new_todo'
+  post '/todos',         :controller => 'todos', :action => 'create', :as => 'todos'
+
+  # READ
+  get '/todos',          :controller => 'todos', :action => 'index'
+  get '/todos/:id',      :controller => 'todos', :action => 'show',   :as => 'todo'
+
+  # UPDATE
+  get '/todos/:id/edit', :controller => 'todos', :action => 'edit',   :as => 'edit_todo'
+  patch '/todos/:id',    :controller => 'todos', :action => 'update'
+
+  # DELETE
+  delete '/todos/:id',   :controller => 'todos', :action => 'destroy'
+  #------------------------------
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
