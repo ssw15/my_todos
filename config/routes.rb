@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'todos#index'
+
   # Routes for the Todo resource:
   # CREATE
   get '/todos/new',      :controller => 'todos', :action => 'new',    :as => 'new_todo'
