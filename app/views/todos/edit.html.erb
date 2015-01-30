@@ -9,40 +9,6 @@
   <% end %>
 <% end %>
 
-
-<!-- Simple full-width example -->
-
-<div class="page-header">
-  <h1>Edit Todo #<%= @todo.id %></h1>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <%= form_tag todo_url(@todo.id), :method => "patch", :class => "form-horizontal" do %>
-      <!-- Label and input for content -->
-      <div class="form-group">
-        <label for="content" class="col-sm-2 control-label">
-          Content
-        </label>
-        <div class="col-sm-10">
-          <input type="text" id="content" name="content" placeholder="Content" class="form-control" value="<%= @todo.content %>">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <input type="submit" value="Update Todo" class="btn btn-warning">
-          or
-          <%= link_to "Cancel", todo_url(@todo.id) %>
-        </div>
-      </div>
-    <% end %>
-
-  </div>
-</div>
-
-<!-- End simple full-width example-->
-
 <!-- Responsive panel example -->
 
 <div class="row">
