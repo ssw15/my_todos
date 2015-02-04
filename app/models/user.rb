@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :todos
+
+  def admin?
+    ["raghu@starterleague.com", "neal@starterleague.com"].include?(self.email)
+  end
 end

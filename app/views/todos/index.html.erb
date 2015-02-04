@@ -49,11 +49,13 @@
           <%= link_to todo_url(todo), :class => "btn btn-primary" do %>
             <i class="fa fa-search-plus"></i>
           <% end %>
-          <%= link_to edit_todo_url(todo), :class => "btn btn-warning" do %>
-            <i class="fa fa-edit"></i>
-          <% end %>
-          <%= link_to todo_url(todo), :method => "delete", :data => { :confirm => "Do you really want to delete this todo?" }, :class => "btn btn-danger" do %>
-            <i class="fa fa-trash-o"></i>
+          <% if todo.user == current_user %>
+            <%= link_to edit_todo_url(todo), :class => "btn btn-warning" do %>
+              <i class="fa fa-edit"></i>
+            <% end %>
+            <%= link_to todo_url(todo), :method => "delete", :data => { :confirm => "Do you really want to delete this todo?" }, :class => "btn btn-danger" do %>
+              <i class="fa fa-trash-o"></i>
+            <% end %>
           <% end %>
         </div>
       </div>

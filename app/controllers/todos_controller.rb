@@ -62,4 +62,12 @@ class TodosController < ApplicationController
 
     redirect_to todos_url, :notice => "Todo deleted."
   end
+
+  before_action :ensure_current_user_is_owner, :only => [:destroy, :edit, :update]
+
+  def ensure_current_user_is_owner
+    unless @todo.user == current_user || current_user.admin?
+      redirect_to root_url, :alert => "Nice try, sucker"
+    end
+  end
 end
