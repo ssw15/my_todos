@@ -1,10 +1,31 @@
 class TodosController < ApplicationController
+
+  # Implement the before_action :set_todo
+
+  # Create an RCAV for /public_todos, which displays all todos
+  #   in the system rather than only the signed-in user's.
+  #   Allow non-signed in users to visit this action.
+
+
+  before_action :set_todo, :only => [:show, :edit, :update, :destroy]
+
+  skip_before_action :authenticate_user!, :only => [:everyones_todos]
+
+  def set_todo
+    @todo = Todo.find(params[:id])
+  end
+
+  def everyones_todos
+    @todos = Todo.all
+
+    render 'index'
+  end
+
   def index
     @todos = current_user.todos
   end
 
   def show
-    @todo = Todo.find(params[:id])
   end
 
   def new
@@ -14,7 +35,7 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new
     @todo.content = params[:content]
-    @todo.user_id = params[:user_id]
+    @todo.user = current_user
 
     if @todo.save
       redirect_to todos_url, :notice => "Todo created successfully."
@@ -24,12 +45,9 @@ class TodosController < ApplicationController
   end
 
   def edit
-    @todo = Todo.find(params[:id])
   end
 
   def update
-    @todo = Todo.find(params[:id])
-
     @todo.content = params[:content]
 
     if @todo.save
@@ -40,8 +58,6 @@ class TodosController < ApplicationController
   end
 
   def destroy
-    @todo = Todo.find(params[:id])
-
     @todo.destroy
 
     redirect_to todos_url, :notice => "Todo deleted."

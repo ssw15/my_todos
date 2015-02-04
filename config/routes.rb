@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root 'todos#index'
 
+  get '/public_todos' => 'todos#everyones_todos'
+
   # Routes for the Todo resource:
   # CREATE
   get '/todos/new',      :controller => 'todos', :action => 'new',    :as => 'new_todo'

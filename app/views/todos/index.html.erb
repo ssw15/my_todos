@@ -1,9 +1,3 @@
-- When a Todo is created, it should be associated to the currently signed in user
-- When someone visits the Todos#index, they should see only their own todos
-
-
-
-
 <div class="page-header">
   <h1>
     Todos
@@ -12,6 +6,19 @@
     <% end  %>
   </h1>
 </div>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= form_tag todos_url do %>
+      <div class="form-group">
+        <input type="text" class="form-control" id="content" placeholder="Add Todo" name="content">
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<hr>
+
 
 <!-- Responsive, Isotope-based layout example -->
 
